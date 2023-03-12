@@ -16,7 +16,7 @@ export class DoctorService extends BaseServiceService{
     super(toastr)
 }
 DoctorLookup$ = () => {
-  let noteURL = `https://localhost:7288/api/v1/Doctor/lookup?clinicId=8CF315BB-AA0F-47FD-4964-08DB22FF7F35`
+  let noteURL = `https://localhost:7288/api/v1/Doctor/lookup?clinicId=0B25845C-F601-4546-041F-08DB2340AAFD`
   return this.http.get<AppRestResponse<DoctorLookup[]>>(noteURL).pipe(
     catchError((err) => this.handleError(err))
 

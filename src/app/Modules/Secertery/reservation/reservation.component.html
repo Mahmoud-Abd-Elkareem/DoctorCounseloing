@@ -1,12 +1,24 @@
 <h1>Reserve Appointment</h1>
 
 <form class="form-group" [formGroup]="AppointmentForm">
+  <div class="row">
+    <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
+      <label>Arabic Title</label>
+      <input   class="form-control"
+      formControlName="titleAr" />
+    </div>
+    <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
+      <label>English Title</label>
+      <input   class="form-control"
+      formControlName="titleEn" />
+    </div>
+  </div>
   <label>Doctor Name</label>
   <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
   <select
   class="form-control"
-  formControlName="yearsOfExperience"
- (change)="getslots($any($event.target).value)"
+  formControlName="doctorId"
+ (change)="getDoctorId($any($event.target).value)"
   >
     <option  [value]=""></option>
     <option *ngFor="let item of doctorlookup" [value]="item.key">{{item.value}}</option>
@@ -16,6 +28,7 @@
   <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
   <select
   class="form-control"
+  formControlName="patientId"
   >
     <option  [value]=""></option>
     <option *ngFor="let item of patientlookup" [value]="item.key">{{item.value}}</option>
@@ -25,11 +38,11 @@
     <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
       <label>Appointment Date</label>
       <input type="text"
+             formControlName="appointmentdate"
              placeholder="Datepicker"
              class="form-control"
-             (bsValueChange)="gettimeperday($event)"
+             (bsValueChange)="gettimeperday($event) "
              bsDatepicker
-             [disabled]="doctorid ==''?true:false"
              [minDate]="today"
              [bsConfig]="{ isAnimated: true }">
     </div>
@@ -37,15 +50,21 @@
       <label>Appointment Time</label>
       <select
       class="form-control"
+      formControlName="appointmenttime"
       >
-        <option  [value]=""></option>
-        <option *ngFor="let item of doctorSchduleSlots" >{{item.utcHour}}</option>
+        <option *ngFor="let item of doctorSchduleSlots" [value]="item.utcHour">{{item.utcHour}}</option>
       </select>
     </div>
   </div>
   <div class="text-end">
-    <button   type="button" class="btn btn-primary" >
+    <button   type="button" class="btn btn-primary" [disabled]="!AppointmentForm.valid"  (click)="AddReservation()">
      Reserve This Appointment
     </button>
   </div>
 </form>
+
+<div>
+  <p *ngIf="AppointmentForm.value.titleAr ||AppointmentForm.value.titleEn">You Have Reserved a {{AppointmentForm.value.titleAr}}/{{AppointmentForm.value.titleEn}}</p>
+  <p *ngIf="doctorname">With Doctor {{doctorname}}</p>
+
+</div>

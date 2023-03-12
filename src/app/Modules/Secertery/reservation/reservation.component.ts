@@ -22,6 +22,7 @@ export class ReservationComponent implements OnInit{
     appointmentdate:new Date()
   }
   doctorid : string =""
+  doctorname? : string =""
   doctorSchduleSlots : doctorSchduleSlots[] =[]
   constructor(public  doctorservice:DoctorService ,public patientservice:PatientService) {
 
@@ -37,7 +38,8 @@ export class ReservationComponent implements OnInit{
       titleEn : new FormControl(this.appointmentObj.titleEn, [Validators.required]),
       doctorId : new FormControl(this.appointmentObj.doctorId, [Validators.required]),
       patientId : new FormControl(this.appointmentObj.patientId, [Validators.required]),
-      appointmentdate : new FormControl(this.appointmentObj.appointmentdate, [Validators.required])
+      appointmentdate : new FormControl("", [Validators.required]),
+      appointmenttime: new FormControl([Validators.required])
     })
   }
 
@@ -45,7 +47,7 @@ export class ReservationComponent implements OnInit{
     this.patientservice.PatientLookup$().subscribe(
       res=>{
         if(res.succeeded){
-          debugger
+
           res.data.forEach(
             doc =>{
               this.patientlookup.push(doc)
@@ -59,7 +61,7 @@ export class ReservationComponent implements OnInit{
     this.doctorservice.DoctorLookup$().subscribe(
       res=>{
         if(res.succeeded){
-          debugger
+
           res.data.forEach(
             doc =>{
               this.doctorlookup.push(doc)
@@ -71,12 +73,16 @@ export class ReservationComponent implements OnInit{
   }
   today : Date = new Date()
 
-  getslots(id : string){
+  getDoctorId(id : string){
+    debugger
     this.doctorid = id
+    this.doctorname = this.doctorlookup.find(doc=>doc.key ==id)?.value
   }
 
-  gettimeperday(day:Date){
-    debugger
+  gettimeperday(day:any){
+    if(!day) {
+      return
+    }
     this.doctorSchduleSlots = []
   this.doctorservice.DoctorSchduleSlots$(this.doctorid).subscribe(
   res=>{
@@ -94,12 +100,17 @@ export class ReservationComponent implements OnInit{
   }
 
   AddReservation(){
+
+    var appointmentdateTime = new Date(this.AppointmentForm.value.appointmentdate);
+    appointmentdateTime.setUTCHours(this.AppointmentForm.value.appointmenttime)
+    appointmentdateTime.setMinutes(0);
+    appointmentdateTime.setSeconds(0);
     this.appointmentObj ={
       titleAr :this.AppointmentForm.value.titleAr,
       titleEn:this.AppointmentForm.value.titleEn,
       doctorId:this.AppointmentForm.value.doctorId,
       patientId:this.AppointmentForm.value.patientId,
-      appointmentdate:this.AppointmentForm.value.appointmentdate
+      appointmentdate:new Date(appointmentdateTime)
     }
     this.doctorservice.AddAppointment$(this.appointmentObj).subscribe(
       res=>{
