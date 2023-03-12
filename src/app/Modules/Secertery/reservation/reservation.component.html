@@ -1,0 +1,51 @@
+<h1>Reserve Appointment</h1>
+
+<form class="form-group" [formGroup]="AppointmentForm">
+  <label>Doctor Name</label>
+  <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+  <select
+  class="form-control"
+  formControlName="yearsOfExperience"
+ (change)="getslots($any($event.target).value)"
+  >
+    <option  [value]=""></option>
+    <option *ngFor="let item of doctorlookup" [value]="item.key">{{item.value}}</option>
+  </select>
+  </div>
+  <label>Patient Name</label>
+  <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+  <select
+  class="form-control"
+  >
+    <option  [value]=""></option>
+    <option *ngFor="let item of patientlookup" [value]="item.key">{{item.value}}</option>
+  </select>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
+      <label>Appointment Date</label>
+      <input type="text"
+             placeholder="Datepicker"
+             class="form-control"
+             (bsValueChange)="gettimeperday($event)"
+             bsDatepicker
+             [disabled]="doctorid ==''?true:false"
+             [minDate]="today"
+             [bsConfig]="{ isAnimated: true }">
+    </div>
+    <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
+      <label>Appointment Time</label>
+      <select
+      class="form-control"
+      >
+        <option  [value]=""></option>
+        <option *ngFor="let item of doctorSchduleSlots" >{{item.utcHour}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="text-end">
+    <button   type="button" class="btn btn-primary" >
+     Reserve This Appointment
+    </button>
+  </div>
+</form>
