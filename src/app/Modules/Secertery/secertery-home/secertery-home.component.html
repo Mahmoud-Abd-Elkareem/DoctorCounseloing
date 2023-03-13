@@ -3,8 +3,28 @@
   <p  class="col-8 h1">Appointments</p>
   </div>
   <div class="col-4 text-center">
-    <button routerLink="Reservation"   type="button" class="btn btn-primary" >
+    <button routerLink="Reservation"   type="button" class="text-end btn btn-primary" >
      Reserve Appointment
     </button>
   </div>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Arabic Title</th>
+        <th scope="col">English Title</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Doctor Name</th>
+        <th scope="col">Appointment Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of appointmentList">
+        <td scope="row">{{item.titleAr}}</td>
+        <td>{{item.titleEn}}</td>
+        <td>{{item.patientName}}</td>
+        <td>{{item.doctorName}}</td>
+        <td>{{item.appointmentDate | date :'dd/MM/yyyy hh:mm a'}}</td>
+      </tr>
+    </tbody>
+  </table>

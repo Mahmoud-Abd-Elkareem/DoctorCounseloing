@@ -1,1 +1,17 @@
-<p>doctor-home works!</p>
+<div class="col-xl-12 d-flex justify-content-center"><div class="card col-xl-4"><p-chart  type="doughnut" [data]="data"></p-chart></div></div>
+<br>
+<h2>Doctors</h2>
+<div class="d-flex flex-wrap">
+  <div  class="p-2 w-25" *ngFor="let item of doctorList">
+    <div  class="card">
+      <div class="card-body">
+        <h5 class="card-title">Arabic Doctor Name:- {{item.doctorNameAr}}</h5>
+        <h5 class="card-title">English Doctor Name:- {{item.doctorNameEn}}</h5>
+        <p class="card-text">{{item.doctorDescAr}}</p>
+        <p class="card-text">{{item.doctorDescEn}}</p>
+        <button type="button" routerLink="Details/{{item.id}}" class="btn btn-primary">Doctor Details</button>
+      </div>
+    </div>
+  </div>
+
+</div>

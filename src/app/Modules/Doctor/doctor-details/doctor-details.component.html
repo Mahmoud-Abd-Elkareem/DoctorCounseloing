@@ -1,0 +1,58 @@
+<h2>Today Appointments</h2>
+<div class="d-flex flex-wrap">
+  <div *ngIf="todayapp.length ==0" class="card border-primary m-3 mb-3 w-25" >
+    <div class="card-header">Appointment Details</div>
+    <div >
+      <div   class="card-body">
+        <p class="card-text">There is No Appointments Today</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex flex-wrap">
+  <div *ngFor="let item of todayapp" class="card border-primary m-3 mb-3 w-25" >
+    <div class="card-header">Appointment Details</div>
+    <div >
+      <div   class="card-body">
+        <h5 class="card-title">Arabic Title :- {{item.titleAr}}</h5>
+        <h5 class="card-title">English Title :- {{item.titleEn}}</h5>
+        <p class="card-text">With {{item.patientName}} At {{item.appointmentDate| date :'dd/MM/yyyy hh:mm a'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<h2>Appointments</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Arabic Title</th>
+      <th scope="col">English Title</th>
+      <th scope="col">Patient Name</th>
+      <th scope="col">Appointment Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let item of doctorDetails.appointments">
+      <td scope="row">{{item.titleAr}}</td>
+      <td>{{item.titleEn}}</td>
+      <td>{{item.patientName}}</td>
+      <td>{{item.appointmentDate | date :'dd/MM/yyyy hh:mm a'}}</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Schdule Slots</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let item of doctorDetails.schduleSlots">
+      <td scope="row">{{['Sunday', 'Monday', 'Tuesday', 'Wedenesday', 'Thursday', 'Friday', 'Saturday'][item.day]}}</td>
+      <td>{{item.utcHour}} :00</td>
+    </tr>
+  </tbody>
+</table>

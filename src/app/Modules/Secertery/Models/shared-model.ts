@@ -20,3 +20,11 @@ export interface appointmentObj{
   patientId: string,
   doctorId: string
 }
+
+export interface appointmentListObj {
+  titleAr: string,
+  titleEn: string,
+  appointmentDate: Date,
+  patientName: string,
+  doctorName: string
+}

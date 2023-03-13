@@ -56,15 +56,18 @@
       </select>
     </div>
   </div>
-  <div class="text-end">
-    <button   type="button" class="btn btn-primary" [disabled]="!AppointmentForm.valid"  (click)="AddReservation()">
+  <div  class="justify-content-end row">
+    <button   type="button" class="m-2 col-2 btn btn-primary" [disabled]="!AppointmentForm.valid"  (click)="AddReservation()">
      Reserve This Appointment
     </button>
+    <button   type="button" class="m-2 col-2 btn btn-primary" routerLink="/Secertery">
+      Back To Home
+     </button>
   </div>
 </form>
-
-<div>
-  <p *ngIf="AppointmentForm.value.titleAr ||AppointmentForm.value.titleEn">You Have Reserved a {{AppointmentForm.value.titleAr}}/{{AppointmentForm.value.titleEn}}</p>
-  <p *ngIf="doctorname">With Doctor {{doctorname}}</p>
-
+<br/>
+<div class="card card-block card-header mb-3" *ngIf="AppointmentForm.value.titleAr">
+  <span *ngIf="AppointmentForm.value.titleAr">You Have Reserved a {{AppointmentForm.value.titleAr}} Appointment</span>
+  <span *ngIf="doctorname"> With Doctor {{doctorname}}</span><span *ngIf="AppointmentForm.value.appointmentdate"> in {{AppointmentForm.value.appointmentdate | date: 'dd/MM/yyyy'}}</span>
+  <span  *ngIf="AppointmentForm.value.appointmenttime" > at {{AppointmentForm.value.appointmenttime}} :00 to {{AppointmentForm.value.appointmenttime}} :30 UTC</span>
 </div>
