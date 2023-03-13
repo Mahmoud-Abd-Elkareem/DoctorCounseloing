@@ -25,7 +25,7 @@ import { ChartModule } from 'primeng/chart';
     ChartModule,
     ReactiveFormsModule,
     NgxToastNotifyModule.forRoot({
-			toastTimeoutInSeconds:  2,
+			toastTimeoutInSeconds:  5,
 			animationDelayInMilliSeconds:  500,
 			enableClosebutton:  true,
 			position:  'top-right',
