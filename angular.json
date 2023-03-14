@@ -25,11 +25,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [
-              "../node_modules/chart.js/dist/chart.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -89,11 +91,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [
-              "../node_modules/chart.js/dist/chart.js"
-            ]
+            "scripts": []
           }
         }
       }

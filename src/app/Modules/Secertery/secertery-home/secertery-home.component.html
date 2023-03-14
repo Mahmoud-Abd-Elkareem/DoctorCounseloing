@@ -28,3 +28,4 @@
       </tr>
     </tbody>
   </table>
+  <p-paginator [hidden]="appointmentTotalCount <= appointmentPageSize" (onPageChange)="paginateAppointment($event)"  [rows]="appointmentPageSize" [totalRecords]="appointmentList.length"></p-paginator>

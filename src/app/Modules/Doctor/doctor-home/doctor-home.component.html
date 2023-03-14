@@ -1,4 +1,18 @@
-<div class="col-xl-12 d-flex justify-content-center"><div class="card col-xl-4"><p-chart  type="doughnut" [data]="data"></p-chart></div></div>
+<div class="col-xl-12 d-flex justify-content-center">
+  <div class="card col-xl-4 m-2">
+      <div class="card-body d-flex justify-content-center align-items-center flex-column">
+        <h4 class="font font-size-18 m-0">
+          Appointments Number
+        </h4>
+        <h2 class="font-size-44">
+            <span class="display-1 px-2 font-numer border-warning">
+              {{AppointmentsCount}}
+          </span>
+        </h2>
+    </div>
+  </div>
+  <div *ngIf="AppointmentsCount !=0" class="card col-xl-4"><p-chart  type="doughnut" [data]="data"></p-chart></div>
+</div>
 <br>
 <h2>Doctors</h2>
 <div class="d-flex flex-wrap">

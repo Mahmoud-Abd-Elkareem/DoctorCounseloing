@@ -14,7 +14,7 @@ export class DoctorHomeComponent implements OnInit{
   doctorsName : string[]=[]
   doctorsAppointment :number[]=[]
   chartOptions: any;
-
+  AppointmentsCount : number =0
   subscription: Subscription;
 
 
@@ -39,6 +39,7 @@ getDoctorList(){
                 this.doctorsName.push(doc.doctorNameAr)
                 this.doctorsAppointment.push(doc.appointmentCounts)
               }
+              this.AppointmentsCount = this.AppointmentsCount+ doc.appointmentCounts
           }
         )
 
@@ -48,14 +49,24 @@ getDoctorList(){
               {
                   data:  this.doctorsAppointment,
                   backgroundColor: [
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56"
+                    "#F7941D",
+                    "#154159",
+                    "#2BB574",
+                    "#707070",
+                    "#4A4A4A",
+                    "#FFC107",
+                    "#009EA3",
+                    "#F5F5F5",
                   ],
                   hoverBackgroundColor: [
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56"
+                    "#F7941D",
+                    "#154159",
+                    "#2BB574",
+                    "#707070",
+                    "#4A4A4A",
+                    "#FFC107",
+                    "#009EA3",
+                    "#F5F5F5",
                   ]
               }
           ]

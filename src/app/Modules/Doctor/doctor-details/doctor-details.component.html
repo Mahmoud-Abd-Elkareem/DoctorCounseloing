@@ -33,7 +33,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let item of doctorDetails.appointments">
+    <tr  *ngFor="let item of appointmentCurrentItems">
       <td scope="row">{{item.titleAr}}</td>
       <td>{{item.titleEn}}</td>
       <td>{{item.patientName}}</td>
@@ -41,6 +41,7 @@
     </tr>
   </tbody>
 </table>
+<p-paginator [hidden]="doctorDetails.appointments.length <= appointmentPageSize"  (onPageChange)="paginateAppointment($event)"  [rows]="appointmentPageSize" [totalRecords]="appointmentTotalCount"></p-paginator>
 <h2>Schdule Slots</h2>
 <table class="table table-striped">
   <thead>
@@ -50,9 +51,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let item of doctorDetails.schduleSlots">
+    <tr  *ngFor="let item of slotCurrentItems">
       <td scope="row">{{['Sunday', 'Monday', 'Tuesday', 'Wedenesday', 'Thursday', 'Friday', 'Saturday'][item.day]}}</td>
       <td>{{item.utcHour}} :00</td>
     </tr>
   </tbody>
 </table>
+<p-paginator [hidden]="doctorDetails.schduleSlots.length <= slotPageSize" (onPageChange)="paginateSlot($event)"  [rows]="slotPageSize" [totalRecords]="slotTotalCount"></p-paginator>

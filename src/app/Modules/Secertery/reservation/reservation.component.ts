@@ -23,6 +23,7 @@ export class ReservationComponent implements OnInit{
     patientId:"",
     appointmentdate:new Date()
   }
+  NotAvailable:boolean = false
   doctorid : string =""
   doctorname? : string =""
   doctorSchduleSlots : doctorSchduleSlots[] =[]
@@ -79,13 +80,20 @@ export class ReservationComponent implements OnInit{
     debugger
     this.doctorid = id
     this.doctorname = this.doctorlookup.find(doc=>doc.key ==id)?.value
-    this.AppointmentForm.controls['appointmentdate'].enable();
+    if(id != ""){
+      this.AppointmentForm.controls['appointmentdate'].enable();
+    }else{
+      this.AppointmentForm.controls['appointmenttime'].disable();
+      this.AppointmentForm.controls['appointmentdate'].disable();
+
+    }
   }
 
   gettimeperday(day:any){
     if(!day) {
       return
     }
+    this.AppointmentForm.controls['appointmenttime'].enable();
     this.doctorSchduleSlots = []
   this.doctorservice.DoctorSchduleSlots$(this.doctorid).subscribe(
   res=>{
@@ -100,8 +108,10 @@ export class ReservationComponent implements OnInit{
       debugger
       if(this.doctorSchduleSlots.length !=0)
       {
+        this.NotAvailable = false
         this.AppointmentForm.controls['appointmenttime'].enable();
       }else{
+        this.NotAvailable = true
         this.AppointmentForm.controls['appointmenttime'].disable();
       }
     }

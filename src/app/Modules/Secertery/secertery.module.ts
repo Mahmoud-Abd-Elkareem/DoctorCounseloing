@@ -8,6 +8,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   declarations: [
     SecerteryHomeComponent,
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SecerteryRoutingModule,
     ReactiveFormsModule,
+    PaginatorModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot()
   ]

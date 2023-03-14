@@ -45,6 +45,7 @@
              bsDatepicker
              [minDate]="today"
              [bsConfig]="{ isAnimated: true }">
+             <span *ngIf="NotAvailable">There Is No Availble Time For The Doctor In This Date</span>
     </div>
     <div class="col-xs-12 col-6 col-md-4 form-group mb-3">
       <label>Appointment Time</label>

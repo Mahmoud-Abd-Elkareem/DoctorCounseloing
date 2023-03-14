@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DoctorRoutingModule } from './doctor-routing.module';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import {ChartModule} from 'primeng/chart';
-
+import {PaginatorModule} from 'primeng/paginator'
 @NgModule({
   declarations: [
     DoctorDetailsComponent
@@ -12,8 +12,8 @@ import {ChartModule} from 'primeng/chart';
   imports: [
     CommonModule,
     DoctorRoutingModule,
-    ChartModule
-
+    ChartModule,
+    PaginatorModule
   ]
 })
 export class DoctorModule { }

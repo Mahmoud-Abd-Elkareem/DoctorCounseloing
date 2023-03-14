@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxToastNotifyModule } from 'ngx-toast-notify';
 import { ChartModule } from 'primeng/chart';
+import {PaginatorModule} from 'primeng/paginator'
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ChartModule } from 'primeng/chart';
 			backgroundColor:  '',
 			textColor:  ''
 	}),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
